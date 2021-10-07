@@ -1,0 +1,30 @@
+---
+trigger:
+  branches:
+    include:
+    - 'trunk'
+
+pool:
+  vmImage: 'ubuntu-18.04'
+
+variables: []
+
+steps:
+  script: |
+    echo -e "##[group]1\n1\n##[endgroup]"
+    echo -e "##[group]2\n2\n##[endgroup]"
+    echo -e "##[group]1\nback to 1\n##[endgroup]"
+    echo -e "line 1"
+    sleep 2s
+    echo -e "line 2"
+    sleep 2s
+    echo -e "line 3"
+    sleep 2s
+    echo -e "line 4"
+    sleep 2s
+    echo -e "\033[1A\033[2K\033[1A\033[2K\033[1A\033[2K\033[1A\033[2K"
+    echo -e "##[group]t1\nline 1\n##[endgroup]"
+    echo -e "##[group]t2\nline 2\n##[endgroup]"
+    echo -e "##[group]t3\nline 3\n##[endgroup]"
+    echo -e "##[group]t4\nline 4\n##[endgroup]"
+  displayName: Validate Output
